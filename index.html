@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+<body>
+	<div id="app">
+		<div class="wrapper">
+			<h1 class = 'title'>Журнал заметок</h1>
+			<form @submit.prevent>
+				
+				<input
+				 class = 'inputs'
+				 type="text" 
+				 placeholder = 'Заголовок'
+				 v-model = 'title'
+				 >
+
+				<input 
+				class = 'inputs' 
+				type="text" 
+				placeholder = 'Описание'
+				v-model = 'body'
+				>
+
+
+				<button
+				class = 'btn'
+				@click = 'saveBtn'
+				>Создать
+				</button>
+
+			</form>
+			
+			<div class="notes">
+				<ul v-for = 'note in notes'>
+					<li>
+						<p class = 'notesList'>
+							<strong>Заголовок:</strong>
+							{{note.title}}
+						</p>
+						<p class = 'notesList'>
+							<strong>Описание:</strong>
+							{{note.body}}
+						</p>
+					</li>
+				</ul>
+				<p v-if = '!notes.length' class = 'active'>{{answer}}</p>
+				<p v-else class = 'col'>Количество заметок: <strong>{{notes.length}}</strong></p>
+			</div>
+		</div>
+	</div>
+	
+
+	<script src = 'app.js'></script>
+</body>
+</html>
